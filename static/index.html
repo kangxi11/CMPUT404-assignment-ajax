@@ -76,7 +76,8 @@ function drawCircle(context,entity) {
         fillStyle = entity["colour"];
         strokeStyle = fillStyle;
         arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
-        stroke();                                
+        stroke();
+        fill();
     }
 }
 
@@ -148,6 +149,7 @@ function addEntity(entity, data) {
     world[entity] = data;
     drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just  modified!
+    // arrow functions don't work here for some reason???
     sendJSONXMLHTTPRequest("/entity/" + entity, data, function() {});
 }
 
